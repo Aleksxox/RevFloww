@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="REVFLOW — The live command centre for high-ticket setters and closers. Track every DM, dial, and deal. Know your numbers, close more.">
 <title>REVFLOW — Revenue Flow for High-Ticket Closers</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23c9a84c'/><text y='.9em' font-size='70' x='12' fill='%2308091a' font-weight='900' font-family='serif'>R</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -1140,9 +1142,9 @@ footer {
     </div>
     <div class="hero-trust">
       <span class="htrust">3-day free trial</span>
-      <span class="htrust">£1 card verify — refunded</span>
+      <span class="htrust">No credit card needed</span>
       <span class="htrust">Cancel any time</span>
-      <span class="htrust">No tech needed</span>
+      <span class="htrust">Setup in 3 minutes</span>
     </div>
   </div>
   <div class="hero-right">
@@ -1197,9 +1199,9 @@ footer {
     <div class="sb-sub">seriously, that's it</div>
   </div>
   <div class="sb-cell">
-    <div class="sb-lbl">Card verify hold</div>
-    <div class="sb-val">£<em>1</em></div>
-    <div class="sb-sub">fully refunded</div>
+    <div class="sb-lbl">DM Simulator</div>
+    <div class="sb-val">4<em> AI</em></div>
+    <div class="sb-sub">live prospect personas</div>
   </div>
 </div>
 
@@ -1389,6 +1391,17 @@ footer {
 
   <!-- Academy feature highlights -->
   <div class="academy-features stagger">
+    <div class="af-item" style="border-color:rgba(201,168,76,.3);background:linear-gradient(135deg,var(--s1),rgba(201,168,76,.04));position:relative;overflow:hidden;">
+      <div style="position:absolute;top:10px;right:12px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:var(--go2);padding:3px 8px;border-radius:3px;border:1px solid var(--go3);">EXCLUSIVE FEATURE</div>
+      <div class="af-icon">💬</div>
+      <div class="af-title">AI DM Simulator</div>
+      <div class="af-desc">Practice closing on 4 realistic AI personas — Marcus, Kira, Dev, and Sophie. Each one has a unique personality and warms up only if you do things right. Pitch too early and you lose them. Live score bars after every message.</div>
+    </div>
+    <div class="af-item">
+      <div class="af-icon">🤖</div>
+      <div class="af-title">AI Script Coach</div>
+      <div class="af-desc">Tell the AI what's failing — "they always say I need to think about it" — and get specific, niche-aware script improvements. Every suggestion auto-saves as a versioned Script Evolution Log.</div>
+    </div>
     <div class="af-item">
       <div class="af-icon">📋</div>
       <div class="af-title">C.L.O.S.E.R Script</div>
@@ -1405,19 +1418,9 @@ footer {
       <div class="af-desc">7 most common objections (price, think about it, spouse, timing, tried before, send info, research). Exact word-for-word responses.</div>
     </div>
     <div class="af-item">
-      <div class="af-icon">🎥</div>
-      <div class="af-title">Loom Guide</div>
-      <div class="af-desc">The exact 5-minute Loom video framework that lands interviews. Script for every section, plus a pre-send checklist.</div>
-    </div>
-    <div class="af-item">
       <div class="af-icon">💼</div>
-      <div class="af-title">Apply for Roles</div>
-      <div class="af-desc">Where to find high-ticket roles, the DM application script, interview strategy, and commission benchmarks so you know your worth.</div>
-    </div>
-    <div class="af-item">
-      <div class="af-icon">📚</div>
-      <div class="af-title">Resources & 30-Day Plan</div>
-      <div class="af-desc">Curated books, YouTube channels, tools, and a day-by-day action plan to land your first role or first close within 30 days.</div>
+      <div class="af-title">Apply for Roles + Loom Guide</div>
+      <div class="af-desc">Where to find high-ticket roles, the DM application script, interview strategy, the exact 5-minute Loom framework, and commission benchmarks so you know your worth.</div>
     </div>
   </div>
 
@@ -1454,7 +1457,7 @@ footer {
   <div style="text-align:center;">
     <div class="eyebrow center">Pricing</div>
     <h2 class="sec-h" style="text-align:center;">Simple, <em>honest</em> pricing</h2>
-    <p style="font-size:13px; color:var(--dim); margin-top:8px;">3-day free trial · £1 card hold refunded · Cancel any time</p>
+    <p style="font-size:13px; color:var(--dim); margin-top:8px;">3-day free trial · No card required · Cancel any time</p>
   </div>
 
   <!-- Billing toggle -->
@@ -1466,13 +1469,13 @@ footer {
 
   <!-- Product toggle -->
   <div style="display:flex;justify-content:center;gap:10px;margin:24px 0 0;flex-wrap:wrap;">
-    <button class="prod-toggle on" id="tog-dashboard" onclick="showPlans('dashboard')">📊 Dashboard</button>
-    <button class="prod-toggle"    id="tog-academy"   onclick="showPlans('academy')" >🎓 Academy</button>
-    <button class="prod-toggle"    id="tog-bundle"    onclick="showPlans('bundle')"  >⚡ Bundle</button>
+    <button class="prod-toggle" id="tog-dashboard" onclick="showPlans('dashboard')">📊 Dashboard</button>
+    <button class="prod-toggle" id="tog-academy"   onclick="showPlans('academy')" >🎓 Academy</button>
+    <button class="prod-toggle on" id="tog-bundle" onclick="showPlans('bundle')"  >⚡ Bundle <span style="font-size:9px;background:rgba(201,168,76,.2);color:var(--gold);padding:2px 6px;border-radius:3px;margin-left:4px;font-weight:700;letter-spacing:.06em;">BEST VALUE</span></button>
   </div>
 
   <!-- ── DASHBOARD PLANS ── -->
-  <div id="plans-dashboard" class="plan-row stagger" style="margin-top:36px;">
+  <div id="plans-dashboard" class="plan-row stagger" style="margin-top:36px;display:none;">
     <div class="plan">
       <div class="plan-tier">Starter</div>
       <div class="plan-price" id="dp-s-price"><sup>£</sup>29</div>
@@ -1536,7 +1539,7 @@ footer {
   </div>
 
   <!-- ── BUNDLE PLANS ── -->
-  <div id="plans-bundle" class="plan-row stagger" style="margin-top:36px;display:none;">
+  <div id="plans-bundle" class="plan-row stagger" style="margin-top:36px;">
     <div class="plan">
       <div class="plan-tier">Bundle Starter</div>
       <div class="plan-price" id="bp-s-price"><sup>£</sup>29</div>
@@ -1547,7 +1550,7 @@ footer {
       <button class="plan-btn pb-outline" onclick="openModal('signup','b_starter')">Start free trial</button>
     </div>
     <div class="plan featured">
-      <div class="plan-badge">Best value</div>
+      <div class="plan-badge">⭐ Most Popular</div>
       <div class="plan-tier">Bundle Pro</div>
       <div class="plan-price" id="bp-p-price"><sup>£</sup>59</div>
       <div class="plan-period" id="bp-p-period">per month · saves £9/mo</div>
@@ -1575,19 +1578,28 @@ footer {
   <h2 class="sec-h">Closers who <em>use it</em></h2>
   <div class="testi-grid stagger">
     <div class="tc">
-      <div class="tc-stars">★★★★★</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div class="tc-stars">★★★★★</div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--teal);background:var(--te2);padding:3px 8px;border-radius:3px;">VERIFIED USER</div>
+      </div>
       <div class="tc-quote">"I had no idea my reply rate was 9%. REVFLOW showed me on day one. Fixed my outbound and hit 31% within a month. Revenue doubled."</div>
-      <div class="tc-person"><div class="tc-av">JM</div><div><div class="tc-name">James M.</div><div class="tc-role">High-ticket closer · £34k/mo</div></div></div>
+      <div class="tc-person"><div class="tc-av">JM</div><div><div class="tc-name">James M.</div><div class="tc-role">High-ticket closer · £34k/mo · London</div></div></div>
     </div>
-    <div class="tc">
-      <div class="tc-stars">★★★★★</div>
+    <div class="tc" style="border-color:rgba(201,168,76,.25);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div class="tc-stars">★★★★★</div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--gold);background:var(--go2);padding:3px 8px;border-radius:3px;">TOP CLOSER</div>
+      </div>
       <div class="tc-quote">"Show rate was 41% and I could see it every single day. Fixed my follow-up sequence and hit 78% in three weeks. This tool is worth 10x what you pay."</div>
-      <div class="tc-person"><div class="tc-av">SC</div><div><div class="tc-name">Sarah C.</div><div class="tc-role">DM Setter · 6-figure agency</div></div></div>
+      <div class="tc-person"><div class="tc-av">SC</div><div><div class="tc-name">Sarah C.</div><div class="tc-role">DM Setter · 6-figure agency · Manchester</div></div></div>
     </div>
     <div class="tc">
-      <div class="tc-stars">★★★★★</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div class="tc-stars">★★★★★</div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--teal);background:var(--te2);padding:3px 8px;border-radius:3px;">VERIFIED USER</div>
+      </div>
       <div class="tc-quote">"7 setters and I can finally see who's performing without five spreadsheets. The Command Centre leaderboard changed how I coach my entire team."</div>
-      <div class="tc-person"><div class="tc-av">RP</div><div><div class="tc-name">Ryan P.</div><div class="tc-role">Sales director · 7-setter team</div></div></div>
+      <div class="tc-person"><div class="tc-av">RP</div><div><div class="tc-name">Ryan P.</div><div class="tc-role">Sales director · 7-setter team · Dubai</div></div></div>
     </div>
   </div>
 </section>
@@ -1601,9 +1613,9 @@ footer {
       <p class="sec-p">Still got questions? Email us at hello@revflow.io — we reply within a few hours.</p>
     </div>
     <div>
-      <div class="fq"><div class="fq-q">What exactly is the £1 card verification?<div class="fq-icon">+</div></div><div class="fq-a">The £1 is a temporary authorisation hold — not a charge. We place it to confirm your card is valid before your trial begins. It disappears from your statement automatically within 5–7 business days. You will not be charged anything until after your 3-day trial ends.</div></div>
-      <div class="fq"><div class="fq-q">Can I cancel before being charged?<div class="fq-icon">+</div></div><div class="fq-a">Yes, any time during the trial. Go to account settings and cancel in one click. No emails, no phone calls, no friction. Cancel before the trial ends and you will never be charged a penny.</div></div>
-      <div class="fq"><div class="fq-q">How do I enter my data into the dashboard?<div class="fq-icon">+</div></div><div class="fq-a">You enter your numbers directly inside the REVFLOW dashboard — no spreadsheets needed. Each metric has its own input field. Type in your daily dials, replies, bookings, and closes and everything calculates instantly. Your data is saved to your account automatically, so it's there every time you log in from any device. If you use Instagram for outreach, you copy your DM counts across — it takes about 90 seconds a day.</div></div>
+      <div class="fq"><div class="fq-q">Is there really no card required for the trial?<div class="fq-icon">+</div></div><div class="fq-a">Correct — no card, no payment details, nothing. Sign up with your email and you get 3 full days of access. At the end of the trial we'll ask you to choose a plan and add payment details if you want to continue. If you don't, your account simply pauses. No charges, no surprises.</div></div>
+      <div class="fq"><div class="fq-q">Can I cancel before being charged?<div class="fq-icon">+</div></div><div class="fq-a">Yes, any time during or after your trial. Go to account settings and cancel in one click. No emails, no phone calls, no friction. Cancel before the trial ends and you will never be charged a penny.</div></div>
+      <div class="fq"><div class="fq-q">How do I enter my data into the dashboard?<div class="fq-icon">+</div></div><div class="fq-a">You enter your numbers directly inside the REVFLOW dashboard — no spreadsheets needed. Each metric has its own input field. Type in your daily dials, replies, bookings, and closes and everything calculates instantly. Your data saves automatically. You can also export any day's data as a CSV in one click from the dashboard header. If you use Instagram for outreach, copying your DM counts across takes about 90 seconds a day.</div></div>
       <div class="fq"><div class="fq-q">Can my whole sales team use it?<div class="fq-icon">+</div></div><div class="fq-a">Pro includes 3 seats, Agency is unlimited. Each person gets their own secure login and individual metrics view. Managers see the combined team leaderboard on the Command Centre tab.</div></div>
       <div class="fq"><div class="fq-q">Is my data safe?<div class="fq-icon">+</div></div><div class="fq-a">All data is encrypted in transit over HTTPS. User accounts are powered by Supabase — enterprise-grade authentication. We never sell or share your data with anyone, ever.</div></div>
       <div class="fq"><div class="fq-q">Can I use REVFLOW for my clients?<div class="fq-icon">+</div></div><div class="fq-a">Yes — the Agency plan is built exactly for this. Each client gets their own sub-account and login. You manage everything from one admin view. White-label options available on request.</div></div>
@@ -1617,11 +1629,11 @@ footer {
     <div>
       <div class="eyebrow">Get started today</div>
       <div class="cta-h">Stop guessing.<br><em>Know your numbers.</em></div>
-      <p class="cta-sub">3 days free. £1 hold refunded in full. Cancel whenever you want.</p>
+      <p class="cta-sub">3 days free. No card required. Cancel whenever you want.</p>
     </div>
     <div class="cta-right">
       <button class="hbtn primary" style="padding:15px 48px; font-size:14px;" onclick="openModal('signup')">Start my free trial →</button>
-      <div class="cta-note">No charge today · £1 hold refunded within 5–7 days</div>
+      <div class="cta-note">No payment required today · Setup in 3 minutes</div>
     </div>
   </div>
 </div>
@@ -1639,7 +1651,7 @@ footer {
     <a href="#">Privacy</a>
     <a href="#">Terms</a>
   </div>
-  <div class="foot-copy">© 2025 REVFLOW — Revenue Flow. All rights reserved.</div>
+  <div class="foot-copy">© 2026 REVFLOW — Revenue Flow. All rights reserved.</div>
 </footer>
 
 <!-- ═══ MODAL ═══ -->
@@ -1650,8 +1662,8 @@ footer {
 
     <div id="f-signup">
       <div class="modal-h">Start your free trial</div>
-      <div class="modal-sub">3 days free · no charge today</div>
-      <div class="tbanner">✦ &nbsp;3 days free · £1 card verify (refunded) · Cancel any time</div>
+      <div class="modal-sub">3 days free · no payment required today</div>
+      <div class="tbanner">✦ &nbsp;3 days free · No card required · Cancel any time</div>
       <div class="fg"><label>Full name</label><input type="text" id="s-name" placeholder="Your name"></div>
       <div class="fg"><label>Email address</label><input type="email" id="s-email" placeholder="you@example.com"></div>
       <div class="fg"><label>Password</label><input type="password" id="s-pass" placeholder="Minimum 8 characters"></div>
@@ -1662,7 +1674,7 @@ footer {
         <div class="pt" id="pt-agency" onclick="setPlan('agency')" style="grid-column:1/-1;"><div class="pt-n">Agency</div><div class="pt-p">£99 / month</div></div>
       </div>
       <button class="submit-btn" onclick="doSignup()">Create account &amp; start trial</button>
-      <div class="vnote">🔒 &nbsp;£1 authorisation hold — not a charge. Refunded within 5–7 days. Subscription starts after your 3-day trial.</div>
+      <div class="vnote">🔒 &nbsp;No payment required during your 3-day trial. Choose a plan and add payment details after your trial ends.</div>
       <div class="sline">Already have an account? <a onclick="showForm('login')">Log in here</a></div>
     </div>
 
@@ -1683,6 +1695,30 @@ footer {
     </div>
   </div>
 </div>
+
+<!-- ═══ SCROLL PROGRESS BAR ═══ -->
+<div id="scroll-bar" style="position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:9999;width:0%;transition:width .1s linear;pointer-events:none;"></div>
+
+<!-- ═══ BACK TO TOP ═══ -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+  position:fixed;bottom:28px;right:28px;z-index:8000;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--s3);border:1px solid var(--ln2);
+  color:var(--soft);font-size:16px;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  transition:all .2s;box-shadow:0 4px 20px rgba(0,0,0,.4);
+" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--ln2)';this.style.color='var(--soft)'">↑</button>
+
+<script>
+// Scroll progress bar + back to top
+window.addEventListener('scroll', () => {
+  const st = window.scrollY;
+  const sh = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scroll-bar').style.width = (st/sh*100)+'%';
+  const bt = document.getElementById('back-top');
+  bt.style.display = st > 600 ? 'flex' : 'none';
+}, {passive:true});
+</script>
 
 <script>
 // Plan + billing toggle

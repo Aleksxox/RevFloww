@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="REVFLOW Academy — High-ticket sales training for setters and closers. Scripts, AI coaching, DM simulator, daily tracker and more.">
 <title>REVFLOW Academy — High-Ticket Sales Training</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23c9a84c'/><text y='.9em' font-size='70' x='12' fill='%2308091a' font-weight='900' font-family='serif'>R</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -30,7 +32,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:14
 ══════════════════════ */
 #screen-onboarding{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:40px 20px;text-align:center;min-height:100vh;
+  padding:40px 20px;text-align:center;min-height:100vh;position:relative;
   background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,168,76,.06) 0%,transparent 70%);
 }
 .ob-logo{
@@ -385,6 +387,245 @@ body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:14
   100% { color: inherit; }
 }
 
+/* ══ EXTRA STYLES for new tabs ══ */
+
+/* ── AI COACH ── */
+.ai-chat { display:flex; flex-direction:column; gap:10px; max-height:420px; overflow-y:auto; padding:4px; margin-bottom:12px; }
+.ai-msg  { display:flex; gap:10px; animation:fadeUp .3s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+.ai-msg.user  { flex-direction:row-reverse; }
+.ai-bubble {
+  max-width:82%; padding:11px 14px; border-radius:10px; font-size:13px; line-height:1.6;
+}
+.ai-msg.ai   .ai-bubble { background:var(--s3); color:var(--body); border:1px solid var(--ln); border-radius:10px 10px 10px 2px; }
+.ai-msg.user .ai-bubble { background:var(--go2); color:var(--hi); border:1px solid var(--go3); border-radius:10px 10px 2px 10px; }
+.ai-avatar { width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--s3);border:1px solid var(--ln); }
+.ai-input-row { display:flex; gap:8px; }
+.ai-input {
+  flex:1; background:var(--s2); border:1px solid var(--ln);
+  color:var(--hi); font-family:var(--sans); font-size:13px;
+  padding:10px 14px; border-radius:8px; outline:none; resize:none;
+  min-height:44px; max-height:100px; transition:border-color .15s;
+}
+.ai-input:focus { border-color:var(--gold); }
+.ai-send {
+  padding:10px 18px; background:var(--gold); color:#08091a;
+  border:none; border-radius:8px; font-size:13px; font-weight:700;
+  cursor:pointer; transition:all .15s; white-space:nowrap;
+}
+.ai-send:hover { background:var(--gold2); }
+.ai-send:disabled { opacity:.5; cursor:default; }
+.ai-thinking { color:var(--dim); font-style:italic; font-size:12px; padding:8px 0; }
+.script-version-card {
+  background:var(--s2); border:1px solid var(--ln); border-radius:8px; padding:14px; margin-bottom:10px;
+}
+.script-version-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.script-version-title { font-size:12px; font-weight:700; color:var(--gold); }
+.script-version-date  { font-size:10px; color:var(--dim); }
+.script-version-text  { font-size:12px; color:var(--body); line-height:1.65; white-space:pre-wrap; }
+.version-actions { display:flex; gap:6px; margin-top:8px; }
+.vbtn {
+  font-size:10px; font-weight:600; letter-spacing:.08em;
+  padding:4px 12px; border-radius:4px; cursor:pointer;
+  border:1px solid var(--ln); background:transparent; color:var(--mid);
+  transition:all .15s;
+}
+.vbtn:hover { border-color:var(--gold); color:var(--gold); }
+.vbtn.active { background:var(--go2); border-color:var(--gold); color:var(--gold); }
+
+/* ── PROGRESS ── */
+.progress-period-tabs { display:flex; gap:6px; margin-bottom:16px; }
+.period-tab {
+  font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  padding:7px 18px; border-radius:6px; cursor:pointer;
+  border:1px solid var(--ln); background:transparent; color:var(--dim);
+  transition:all .15s;
+}
+.period-tab.on { background:var(--go2); border-color:var(--go3); color:var(--gold); }
+.progress-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px; }
+.prog-stat {
+  background:var(--s2); border:1px solid var(--ln); border-radius:8px;
+  padding:14px; text-align:center;
+}
+.prog-stat-val { font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--gold); line-height:1; margin-bottom:4px; }
+.prog-stat-lbl { font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); }
+.habit-bar-row { display:flex; flex-direction:column; gap:8px; }
+.hbar { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--ln); }
+.hbar:last-child { border-bottom:none; }
+.hbar-label { font-size:12px; color:var(--body); width:160px; flex-shrink:0; }
+.hbar-bg    { flex:1; height:6px; background:var(--s4); border-radius:3px; overflow:hidden; }
+.hbar-fill  { height:100%; border-radius:3px; background:linear-gradient(90deg,var(--gold),var(--gold2)); transition:width .6s ease; }
+.hbar-pct   { font-size:10px; font-weight:700; color:var(--gold); width:32px; text-align:right; }
+.journal-history { display:flex; flex-direction:column; gap:10px; margin-top:4px; }
+.journal-entry {
+  background:var(--s2); border:1px solid var(--ln); border-radius:8px; padding:14px;
+}
+.journal-entry-date { font-size:10px; font-weight:700; color:var(--gold); margin-bottom:6px; }
+.journal-entry-text { font-size:12px; color:var(--mid); line-height:1.65; font-style:italic; }
+
+@media (max-width:640px) {
+  .progress-grid { grid-template-columns:1fr 1fr; }
+  .hbar-label { width:110px; font-size:11px; }
+  .ai-chat { max-height:320px; }
+}
+
+/* ── DM SIMULATOR ── */
+.sim-top {
+  display: grid; grid-template-columns: 260px 1fr; gap: 14px; align-items: start;
+}
+.sim-sidebar {
+  background: var(--s2); border: 1px solid var(--ln); border-radius: 10px; overflow: hidden;
+  position: sticky; top: 66px;
+}
+.sim-sidebar-head {
+  padding: 12px 14px; background: var(--s3); border-bottom: 1px solid var(--ln);
+  font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--soft);
+}
+.persona-card {
+  padding: 14px; cursor: pointer; border-bottom: 1px solid var(--ln);
+  transition: background .15s; display: flex; gap: 10px; align-items: flex-start;
+}
+.persona-card:last-child { border-bottom: none; }
+.persona-card:hover { background: var(--s3); }
+.persona-card.active { background: var(--go2); border-left: 2px solid var(--gold); }
+.persona-avatar {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; background: var(--s4); border: 1px solid var(--ln);
+}
+.persona-name  { font-size: 13px; font-weight: 700; color: var(--hi); margin-bottom: 2px; }
+.persona-desc  { font-size: 10px; color: var(--mid); line-height: 1.4; }
+.persona-badge {
+  font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 3px; margin-top: 4px; display: inline-block;
+}
+.persona-badge.easy   { background: rgba(44,196,196,.12); color: var(--teal); }
+.persona-badge.medium { background: var(--go2); color: var(--gold2); }
+.persona-badge.hard   { background: rgba(192,57,75,.1); color: #e06878; }
+
+/* Chat window — Instagram style */
+.sim-chat-wrap {
+  background: var(--s1); border: 1px solid var(--ln); border-radius: 10px; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.sim-chat-header {
+  padding: 12px 16px; background: var(--s2); border-bottom: 1px solid var(--ln);
+  display: flex; align-items: center; gap: 12px;
+}
+.sim-chat-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; background: var(--s4); border: 1px solid var(--ln); flex-shrink: 0;
+}
+.sim-chat-name  { font-size: 14px; font-weight: 700; color: var(--hi); }
+.sim-chat-status { font-size: 11px; color: var(--teal); }
+.sim-chat-actions { margin-left: auto; display: flex; gap: 6px; }
+.sim-action-btn {
+  font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 5px; cursor: pointer; border: 1px solid var(--ln);
+  background: transparent; color: var(--mid); transition: all .15s;
+}
+.sim-action-btn:hover { border-color: var(--gold); color: var(--gold); }
+.sim-action-btn.danger:hover { border-color: #e06878; color: #e06878; }
+
+/* Messages */
+.sim-messages {
+  flex: 1; overflow-y: auto; padding: 16px; display: flex;
+  flex-direction: column; gap: 8px; min-height: 400px; max-height: 460px;
+}
+.sim-msg { display: flex; gap: 8px; animation: fadeUp .25s ease; }
+.sim-msg.mine { flex-direction: row-reverse; }
+.sim-msg.typing-indicator { align-items: center; }
+.sim-bubble {
+  max-width: 70%; padding: 10px 13px; border-radius: 18px;
+  font-size: 13px; line-height: 1.55; position: relative;
+}
+.sim-msg.theirs .sim-bubble {
+  background: var(--s3); color: var(--body); border: 1px solid var(--ln);
+  border-bottom-left-radius: 4px;
+}
+.sim-msg.mine .sim-bubble {
+  background: var(--go2); color: var(--hi); border: 1px solid var(--go3);
+  border-bottom-right-radius: 4px;
+}
+.sim-msg-time { font-size: 9px; color: var(--dim); align-self: flex-end; margin-bottom: 2px; }
+.typing-dots {
+  display: flex; gap: 4px; padding: 12px 16px;
+  background: var(--s3); border: 1px solid var(--ln); border-radius: 18px;
+  border-bottom-left-radius: 4px;
+}
+.typing-dots span {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--mid);
+  animation: typing-bounce 1.2s ease-in-out infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: .2s; }
+.typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes typing-bounce {
+  0%,60%,100% { transform: translateY(0); }
+  30%          { transform: translateY(-5px); }
+}
+
+/* Coach tip panel */
+.sim-coach-tip {
+  background: var(--go2); border: 1px solid var(--go3); border-radius: 8px;
+  padding: 10px 14px; font-size: 12px; color: var(--soft); line-height: 1.6;
+  margin: 4px 0; display: flex; gap: 8px;
+}
+.sim-coach-tip::before { content: '💡'; flex-shrink: 0; }
+
+/* Input area */
+.sim-input-area {
+  padding: 12px 16px; background: var(--s2); border-top: 1px solid var(--ln);
+  display: flex; gap: 8px; align-items: flex-end;
+}
+.sim-input {
+  flex: 1; background: var(--s3); border: 1px solid var(--ln);
+  color: var(--hi); font-family: var(--sans); font-size: 13px;
+  padding: 10px 14px; border-radius: 22px; outline: none;
+  resize: none; min-height: 42px; max-height: 120px;
+  transition: border-color .15s; line-height: 1.4;
+}
+.sim-input:focus { border-color: var(--gold); }
+.sim-input::placeholder { color: var(--dim); }
+.sim-send-btn {
+  width: 42px; height: 42px; border-radius: 50%; border: none;
+  background: var(--gold); color: #08091a; font-size: 16px;
+  cursor: pointer; flex-shrink: 0; transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.sim-send-btn:hover   { background: var(--gold2); transform: scale(1.05); }
+.sim-send-btn:disabled { opacity: .4; cursor: default; transform: none; }
+
+/* Score panel */
+.score-panel {
+  background: var(--s2); border: 1px solid var(--ln); border-radius: 10px; padding: 16px;
+  margin-top: 14px;
+}
+.score-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 14px; }
+.score-item { text-align: center; }
+.score-val { font-family: 'Playfair Display',serif; font-size: 26px; font-weight: 700; line-height: 1; }
+.score-val.great { color: var(--teal); }
+.score-val.good  { color: var(--gold); }
+.score-val.poor  { color: #e06878; }
+.score-lbl { font-size: 9px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-top: 3px; }
+.feedback-item {
+  padding: 8px 12px; border-radius: 6px; font-size: 12px; line-height: 1.5;
+  margin-bottom: 6px; display: flex; gap: 8px;
+}
+.feedback-item.positive { background: rgba(44,196,196,.08); color: var(--body); }
+.feedback-item.negative { background: rgba(192,57,75,.08); color: var(--body); }
+.feedback-item::before { flex-shrink: 0; font-size: 14px; }
+.feedback-item.positive::before { content: '✓'; color: var(--teal); font-weight: 700; }
+.feedback-item.negative::before { content: '✗'; color: #e06878; font-weight: 700; }
+
+@media (max-width: 760px) {
+  .sim-top { grid-template-columns: 1fr; }
+  .sim-sidebar { position: static; }
+  .score-grid { grid-template-columns: repeat(2,1fr); }
+  .sim-messages { min-height: 300px; max-height: 360px; }
+  .sim-bubble { max-width: 82%; }
+}
+
 </style>
 </head>
 <body>
@@ -398,7 +639,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:14
   <p class="ob-p">Choose your level and we'll give you the right daily tasks, scripts, and training — tailored to exactly where you are right now.</p>
   <div style="margin-bottom:24px;width:100%;max-width:320px;">
     <label style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:8px;">Your first name</label>
-    <input type="text" id="ob-name-input" placeholder="e.g. James" style="width:100%;background:var(--s2);border:1px solid var(--ln);color:var(--hi);font-family:var(--sans);font-size:15px;padding:10px 14px;border-radius:7px;outline:none;text-align:center;transition:border-color .15s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--ln)'">
+    <input type="text" id="ob-name-input" placeholder="e.g. James" autofocus style="width:100%;background:var(--s2);border:1px solid var(--ln);color:var(--hi);font-family:var(--sans);font-size:15px;padding:10px 14px;border-radius:7px;outline:none;text-align:center;transition:border-color .15s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--ln)'">
   </div>
   <div class="level-cards">
     <div class="level-card" onclick="selectLevel('beginner',this)">
@@ -421,6 +662,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:14
     </div>
   </div>
   <button class="ob-btn" id="ob-btn" onclick="enterApp()">Enter My Academy →</button>
+  <p style="font-size:10px;color:var(--dim);margin-top:10px;letter-spacing:.06em;">or press <kbd style="background:var(--s3);border:1px solid var(--ln2);border-radius:3px;padding:1px 6px;font-size:10px;color:var(--mid);">Enter ↵</kbd> after selecting a level</p>
 </div>
 
 <!-- ══════════ MAIN APP ══════════ -->
@@ -431,6 +673,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:14
     </div>
     <span class="app-level-badge" id="level-badge">Beginner</span>
     <div class="app-spacer"></div>
+    <a href="revflow-dashboard.html" style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:transparent;border:1px solid var(--ln);padding:5px 12px;border-radius:4px;text-decoration:none;transition:all .15s;white-space:nowrap;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold)'" onmouseout="this.style.color='var(--dim)';this.style.borderColor='var(--ln)'">📊 Dashboard</a>
     <button class="switch-level-btn" onclick="switchLevel()">Switch level</button>
   </div>
 
@@ -483,16 +726,36 @@ function selectLevel(level, el) {
 
 function enterApp() {
   if (!document.querySelector('.level-card.selected')) return;
-  // Ask for name if not set
   const nameInput = document.getElementById('ob-name-input');
-  if (nameInput && nameInput.value.trim()) {
-    userName = nameInput.value.trim();
-  }
+  if (nameInput && nameInput.value.trim()) userName = nameInput.value.trim();
   saveProfile({ level: currentLevel, niche: selectedNiche, name: userName });
-  document.getElementById('screen-onboarding').classList.remove('active');
-  document.getElementById('screen-app').classList.add('active');
-  renderApp();
+  // Animate out onboarding, scroll to top, show app
+  const ob = document.getElementById('screen-onboarding');
+  ob.style.transition = 'opacity .3s ease';
+  ob.style.opacity = '0';
+  setTimeout(() => {
+    ob.classList.remove('active');
+    ob.style.opacity = '';
+    ob.style.transition = '';
+    const app = document.getElementById('screen-app');
+    app.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    renderApp();
+  }, 280);
 }
+
+// Allow Enter key to submit onboarding
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    const ob = document.getElementById('screen-onboarding');
+    if (ob && ob.classList.contains('active')) {
+      const btn = document.getElementById('ob-btn');
+      if (btn && btn.classList.contains('ready')) enterApp();
+    }
+  }
+});
 
 function switchLevel() {
   document.getElementById('screen-app').classList.remove('active');
@@ -507,7 +770,7 @@ function switchLevel() {
 const LEVEL_CONFIG = {
   beginner: {
     label: 'Beginner',
-    tabs: ['Daily Tracker','Scripts','Objections','Apply for Roles','Loom Guide','Resources'],
+    tabs: ['Daily Tracker','DM Simulator','Scripts','AI Script Coach','Progress','Objections','Apply for Roles','Loom Guide','Resources'],
     color: 'var(--teal)',
     tagline: 'Build your foundation. Your first close starts here.',
     description: 'You\'re new to high-ticket sales. We start with the basics — habits, mindset, your first script, and how to land your first role. Nothing is assumed. Everything is explained.',
@@ -518,7 +781,7 @@ const LEVEL_CONFIG = {
   },
   mid: {
     label: 'Intermediate',
-    tabs: ['Daily Tracker','Scripts','Objections','Apply for Roles','Loom Guide','Call Review','Resources'],
+    tabs: ['Daily Tracker','DM Simulator','Scripts','AI Script Coach','Progress','Objections','Apply for Roles','Loom Guide','Call Review','Resources'],
     color: 'var(--gold)',
     tagline: 'Sharpen your edge. Convert the pipeline you\'re building.',
     description: 'You\'ve been on calls. You know the basics. Now we sharpen the details — objection handling, tonality, role play, and hitting consistent numbers. Less hand-holding, more precision.',
@@ -529,7 +792,7 @@ const LEVEL_CONFIG = {
   },
   advanced: {
     label: 'Advanced',
-    tabs: ['Daily Tracker','Scripts','Objections','Team & Scale','Agency Launch','Call Review','Resources'],
+    tabs: ['Daily Tracker','DM Simulator','Scripts','AI Script Coach','Progress','Objections','Team & Scale','Agency Launch','Call Review','Resources'],
     color: '#e06878',
     tagline: 'Lead. Scale. Build something that runs without you.',
     description: 'You close consistently. Now you\'re building a team, launching an agency, or managing other closers. The focus shifts from your own calls to systems, leadership, and leverage.',
@@ -564,7 +827,10 @@ function renderTab() {
   const el = document.getElementById('app-content');
   el.innerHTML = '';
   if (tab === 'Daily Tracker')    renderTracker(el);
+  else if (tab === 'DM Simulator') renderDMSimulator(el);
   else if (tab === 'Scripts')     renderScripts(el);
+  else if (tab === 'AI Script Coach') renderAICoach(el);
+  else if (tab === 'Progress')    renderProgress(el);
   else if (tab === 'Objections')  renderObjections(el);
   else if (tab === 'Apply for Roles') renderApply(el);
   else if (tab === 'Loom Guide')  renderLoom(el);
@@ -1193,6 +1459,789 @@ function showToast(msg) {
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+/* ══════════════════════════════════════════════════
+   AI SCRIPT COACH
+══════════════════════════════════════════════════ */
+let aiChatHistory = JSON.parse(localStorage.getItem('rf_ai_chat_' + USER_ID) || '[]');
+let scriptVersions = JSON.parse(localStorage.getItem('rf_script_versions_' + USER_ID) || '[]');
+let activeVersionIdx = scriptVersions.length - 1;
+
+function renderAICoach(el) {
+  const cfg = getLevelConfig();
+  el.innerHTML = `
+    <div class="section-label">AI Script Coach — Powered by Claude</div>
+
+    <div class="card">
+      <div class="card-title">🤖 Script Improvement Coach</div>
+      <div class="card-sub">Tell the AI what's working, what's not, what objections you're hearing — and it will help you improve your script. Every improved version is saved below so you can track how your script evolves.</div>
+      <div style="background:var(--s3);border:1px solid var(--ln2);border-radius:6px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--soft);border-left:2px solid var(--gold);">
+        <strong style="color:var(--hi);">How to use:</strong> Describe a specific situation — "I keep losing them at the price objection", "My opener isn't getting responses", "They agree but then ghost me". The more specific, the better the feedback.
+      </div>
+
+      <div class="ai-chat" id="ai-chat-window">
+        ${aiChatHistory.length === 0 ? `
+          <div class="ai-msg ai">
+            <div class="ai-avatar">🤖</div>
+            <div class="ai-bubble">Hey ${userName || 'there'} — I'm your Script Coach. Tell me what's happening on your calls. What's working? What's not? Where do you feel you're losing them? Be as specific as you can and I'll help you tighten the script.</div>
+          </div>` :
+          aiChatHistory.map(m => `
+          <div class="ai-msg ${m.role}">
+            <div class="ai-avatar">${m.role === 'ai' ? '🤖' : '👤'}</div>
+            <div class="ai-bubble">${m.content}</div>
+          </div>`).join('')
+        }
+      </div>
+
+      <div class="ai-input-row">
+        <textarea class="ai-input" id="ai-input" placeholder="e.g. They always say 'I need to think about it' and then I never hear back..." rows="2" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendAIMessage();}"></textarea>
+        <button class="ai-send" id="ai-send-btn" onclick="sendAIMessage()">Send →</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
+        <span style="font-size:10px;color:var(--dim);">Press Enter to send · Shift+Enter for new line</span>
+        <button onclick="clearAIChat()" style="font-size:10px;color:var(--dim);background:transparent;border:none;cursor:pointer;text-decoration:underline;">Clear chat</button>
+      </div>
+    </div>
+
+    <div class="section-label">Saved Script Versions</div>
+    <div class="card">
+      <div class="card-title">📋 Script Evolution Log</div>
+      <div class="card-sub">Every improved script the AI generates is saved here. You can see how your script has evolved over time and revert to any version.</div>
+      <div id="script-versions-list">
+        ${scriptVersions.length === 0 ?
+          '<div style="font-size:12px;color:var(--dim);text-align:center;padding:20px 0;">No script versions saved yet. Ask the AI to improve your script and versions will appear here.</div>' :
+          scriptVersions.map((v,i) => `
+            <div class="script-version-card">
+              <div class="script-version-header">
+                <span class="script-version-title">Version ${i+1}${i===scriptVersions.length-1?' (Current)':''}</span>
+                <span class="script-version-date">${v.date}</span>
+              </div>
+              <div class="script-version-text">${v.content}</div>
+              <div class="version-actions">
+                <button class="vbtn ${i===activeVersionIdx?'active':''}" onclick="setActiveVersion(${i})">Use this version</button>
+                <button class="vbtn" onclick="copyVersion(${i})">Copy</button>
+              </div>
+            </div>`).join('')
+        }
+      </div>
+    </div>
+  `;
+  // scroll chat to bottom
+  setTimeout(() => {
+    const chat = document.getElementById('ai-chat-window');
+    if (chat) chat.scrollTop = chat.scrollHeight;
+  }, 50);
+}
+
+async function sendAIMessage() {
+  const input = document.getElementById('ai-input');
+  const btn   = document.getElementById('ai-send-btn');
+  const msg   = input.value.trim();
+  if (!msg) return;
+
+  // Add user message
+  aiChatHistory.push({ role: 'user', content: msg });
+  input.value = '';
+  btn.disabled = true;
+  btn.textContent = '...';
+
+  // Render user bubble
+  const chat = document.getElementById('ai-chat-window');
+  chat.innerHTML += `<div class="ai-msg user"><div class="ai-avatar">👤</div><div class="ai-bubble">${escapeHtml(msg)}</div></div>`;
+  chat.innerHTML += `<div id="ai-thinking" class="ai-thinking">🤖 Thinking...</div>`;
+  chat.scrollTop = chat.scrollHeight;
+
+  // Build system context
+  const n = nicheLines[selectedNiche];
+  const cfg = getLevelConfig();
+  const systemPrompt = `You are an expert high-ticket sales coach helping a ${cfg.label.toLowerCase()} sales setter/closer improve their script.
+
+Their niche: ${niches.find(x=>x.id===selectedNiche)?.label || 'Coaching'}
+Their level: ${cfg.label}
+Their name: ${userName || 'the user'}
+Product value range: ${n.price}
+Offer: ${n.offer}
+Pain they solve: ${n.pain}
+Dream outcome: ${n.dream}
+
+Your job is to:
+1. Listen to what they report about their calls — what's working, what's failing, what objections they face
+2. Give specific, actionable script improvements — not generic advice
+3. When you suggest an improved script section, format it clearly with "IMPROVED SCRIPT:" label
+4. Be concise — 3-4 paragraphs maximum
+5. Focus on the CLOSER framework: Clarify → Label → Overview → Sell → Explain → Reinforce
+6. If you provide an improved script section, end your message with [SAVE_VERSION] so the system knows to save it
+
+Keep responses conversational but expert. Don't use bullet points — use short paragraphs.`;
+
+  // Build messages for API
+  const messages = [
+    { role: 'user', content: 'Hello, I need help improving my sales script.' },
+    { role: 'assistant', content: `Hi ${userName || 'there'}! I'm your Script Coach. Tell me exactly what's happening on your calls — what's working, what's breaking down, what objections you're getting stuck on. The more specific you are, the more targeted my help will be.` },
+  ];
+  // Add recent chat history (last 8 messages)
+  const recentHistory = aiChatHistory.slice(-8);
+  recentHistory.forEach(m => {
+    messages.push({ role: m.role === 'ai' ? 'assistant' : 'user', content: m.content });
+  });
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: messages,
+      })
+    });
+    const data = await response.json();
+    let reply = data.content?.[0]?.text || 'Sorry, I couldn\'t process that. Please try again.';
+
+    // Check if we should save a script version
+    const shouldSave = reply.includes('[SAVE_VERSION]');
+    reply = reply.replace('[SAVE_VERSION]', '').trim();
+
+    // Add AI response to history
+    aiChatHistory.push({ role: 'ai', content: reply });
+    localStorage.setItem('rf_ai_chat_' + USER_ID, JSON.stringify(aiChatHistory.slice(-40)));
+
+    // If improved script, save version
+    if (shouldSave || reply.includes('IMPROVED SCRIPT:')) {
+      const scriptMatch = reply.match(/IMPROVED SCRIPT:([\s\S]+?)(?:\n\n|$)/);
+      const scriptContent = scriptMatch ? scriptMatch[1].trim() : reply;
+      scriptVersions.push({
+        date: new Date().toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}),
+        content: scriptContent,
+        fullChat: reply,
+        niche: selectedNiche,
+        level: currentLevel,
+      });
+      activeVersionIdx = scriptVersions.length - 1;
+      localStorage.setItem('rf_script_versions_' + USER_ID, JSON.stringify(scriptVersions));
+    }
+
+    // Remove thinking, add AI bubble
+    document.getElementById('ai-thinking')?.remove();
+    chat.innerHTML += `<div class="ai-msg ai"><div class="ai-avatar">🤖</div><div class="ai-bubble">${escapeHtml(reply)}</div></div>`;
+    if (shouldSave) {
+      chat.innerHTML += `<div style="font-size:11px;color:var(--gold);padding:6px 10px;background:var(--go2);border-radius:6px;margin-left:40px;">✓ Improved script version saved to your Script Evolution Log</div>`;
+    }
+    chat.scrollTop = chat.scrollHeight;
+
+  } catch(err) {
+    document.getElementById('ai-thinking')?.remove();
+    chat.innerHTML += `<div class="ai-msg ai"><div class="ai-avatar">🤖</div><div class="ai-bubble" style="color:var(--rose)">Something went wrong connecting to the AI. Check your internet connection and try again.</div></div>`;
+    aiChatHistory.pop(); // remove failed user message
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Send →';
+}
+
+function clearAIChat() {
+  if (!confirm('Clear chat history? Script versions are kept.')) return;
+  aiChatHistory = [];
+  localStorage.setItem('rf_ai_chat_' + USER_ID, '[]');
+  const tab = document.getElementById('app-content');
+  renderAICoach(tab);
+}
+
+function setActiveVersion(i) {
+  activeVersionIdx = i;
+  showToast('Script version ' + (i+1) + ' set as active ✓');
+  const tab = document.getElementById('app-content');
+  renderAICoach(tab);
+}
+
+function copyVersion(i) {
+  navigator.clipboard?.writeText(scriptVersions[i].content).then(() => showToast('Copied to clipboard ✓'));
+}
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/\n/g,'<br>');
+}
+
+/* ══════════════════════════════════════════════════
+   PROGRESS TRACKER
+══════════════════════════════════════════════════ */
+let progressPeriod = 'week';
+
+function renderProgress(el) {
+  el.innerHTML = `
+    <div class="section-label">Your Progress Overview</div>
+
+    <div class="progress-period-tabs">
+      <button class="period-tab${progressPeriod==='day'?' on':''}"   onclick="setProgressPeriod('day')">Today</button>
+      <button class="period-tab${progressPeriod==='week'?' on':''}"  onclick="setProgressPeriod('week')">This Week</button>
+      <button class="period-tab${progressPeriod==='month'?' on':''}" onclick="setProgressPeriod('month')">This Month</button>
+    </div>
+
+    <div id="progress-content"></div>
+  `;
+  renderProgressContent();
+}
+
+function setProgressPeriod(p) {
+  progressPeriod = p;
+  document.querySelectorAll('.period-tab').forEach(t => {
+    t.classList.toggle('on', t.textContent.toLowerCase().includes(p === 'day' ? 'today' : p));
+  });
+  renderProgressContent();
+}
+
+function renderProgressContent() {
+  const container = document.getElementById('progress-content');
+  if (!container) return;
+
+  const {morning, work, evening} = getTrackerItems();
+  const allItems = [...morning, ...work, ...evening];
+  const totalXP = allItems.reduce((a,b) => a+b.xp, 0);
+
+  // Gather data for the period
+  const days = getDaysForPeriod(progressPeriod);
+  let totalEarned = 0, totalPossible = 0, daysCompleted = 0;
+  const habitCounts = {}; // how many days each habit was done
+
+  allItems.forEach(item => { habitCounts[item.id] = 0; });
+
+  days.forEach(dateStr => {
+    const key = 'day_' + dateStr + '_' + currentLevel;
+    const dayEarned = allItems.filter(i => checked[key + i.id]).reduce((a,b) => a+b.xp, 0);
+    const dayXP = allItems.reduce((a,b) => a+b.xp, 0);
+    totalEarned    += dayEarned;
+    totalPossible  += dayXP;
+    if (dayEarned > 0) daysCompleted++;
+    allItems.forEach(item => {
+      if (checked[key + item.id]) habitCounts[item.id]++;
+    });
+  });
+
+  const overallPct = totalPossible > 0 ? Math.round(totalEarned/totalPossible*100) : 0;
+  const periodLabel = progressPeriod === 'day' ? '1 day' : progressPeriod === 'week' ? '7 days' : '30 days';
+
+  // Journal entries for this period
+  const journalEntries = days
+    .map(d => ({ date: d, text: journal[d + '_' + currentLevel] }))
+    .filter(e => e.text)
+    .reverse()
+    .slice(0, 5);
+
+  // Top habits (sorted by completion rate)
+  const habitData = allItems.map(item => ({
+    label: item.label.length > 40 ? item.label.slice(0,40)+'…' : item.label,
+    pct: days.length > 0 ? Math.round((habitCounts[item.id] / days.length) * 100) : 0,
+  })).sort((a,b) => b.pct - a.pct);
+
+  container.innerHTML = `
+    <div class="progress-grid">
+      <div class="prog-stat">
+        <div class="prog-stat-val">${overallPct}%</div>
+        <div class="prog-stat-lbl">Overall Completion</div>
+      </div>
+      <div class="prog-stat">
+        <div class="prog-stat-val">${daysCompleted}</div>
+        <div class="prog-stat-lbl">Active Days (of ${days.length})</div>
+      </div>
+      <div class="prog-stat">
+        <div class="prog-stat-val">${totalEarned}</div>
+        <div class="prog-stat-lbl">XP Earned</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-title">📊 Habit Completion — ${periodLabel}</div>
+      <div class="card-sub">How consistently you completed each habit over the period.</div>
+      <div class="habit-bar-row">
+        ${habitData.slice(0,10).map(h => `
+          <div class="hbar">
+            <div class="hbar-label">${h.label}</div>
+            <div class="hbar-bg"><div class="hbar-fill" style="width:${h.pct}%"></div></div>
+            <div class="hbar-pct">${h.pct}%</div>
+          </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📓 Recent Journal Entries</div>
+      <div class="card-sub">Your reflections from the last ${periodLabel}.</div>
+      <div class="journal-history">
+        ${journalEntries.length === 0
+          ? '<div style="font-size:12px;color:var(--dim);text-align:center;padding:16px 0;">No journal entries in this period yet. Write in the Daily Tracker tab.</div>'
+          : journalEntries.map(e => `
+            <div class="journal-entry">
+              <div class="journal-entry-date">${new Date(e.date).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'})}</div>
+              <div class="journal-entry-text">"${e.text.slice(0,280)}${e.text.length>280?'…':''}"</div>
+            </div>`).join('')
+        }
+      </div>
+    </div>
+  `;
+}
+
+function getDaysForPeriod(period) {
+  const days = [];
+  const d = new Date();
+  const count = period === 'day' ? 1 : period === 'week' ? 7 : 30;
+  for (let i = 0; i < count; i++) {
+    days.push(new Date(d).toDateString());
+    d.setDate(d.getDate() - 1);
+  }
+  return days;
+}
+
+/* ══════════════════════════════════════════════════
+   DM SETTER SIMULATOR
+══════════════════════════════════════════════════ */
+
+const DM_PERSONAS = [
+  {
+    id: 'coach_busy',
+    emoji: '👔',
+    name: 'Marcus Webb',
+    handle: '@marcuswebb.co',
+    type: 'Business Coach',
+    difficulty: 'easy',
+    diffLabel: 'Easy',
+    bio: '10k followers · Business coach · Posts about mindset and productivity',
+    mood: 'open',
+    systemPrompt: `You are Marcus Webb, a business coach with 10k Instagram followers. You post about mindset, productivity, and entrepreneurship. You sell a £3,500 coaching programme.
+
+You're generally open to conversations but busy. Your personality: friendly, slightly guarded at first, warms up quickly if the setter is genuine and specific. You don't like generic openers. You appreciate when people reference your specific content.
+
+Respond ONLY as Marcus — short, natural Instagram DM replies (1-3 sentences max). No asterisks. No formatting.
+
+At the end of EVERY reply, add this exact tag on a new line: [SCORE: rapport=X, qualify=X, objection=X, booking=X] where X is 0-10 based on how well the setter is doing in each area. Start scores at 0 and only increase them as the setter actually demonstrates skill.
+
+Your progression:
+- Message 1: If generic → cool/dismissive. If specific/genuine → curious.
+- Message 2-3: If they ask good questions → start opening up about business.
+- Message 3-4: If they qualify you well → mention you do have sales calls but handle them yourself.
+- Message 4-5: If they're good → become genuinely interested, ask what they do.
+- Message 5+: If they pitch too early → say you're not interested. If they build properly → willing to discuss a call.
+- If they ask to book a call too early (before qualifying) → "I'm all good thanks, handle my own sales."`,
+  },
+  {
+    id: 'fitness_skeptical',
+    emoji: '💪',
+    name: 'Kira Santos',
+    handle: '@kirasantos.fit',
+    type: 'Fitness Coach',
+    difficulty: 'medium',
+    diffLabel: 'Medium',
+    bio: '45k followers · Online fitness coach · High DM volume, lots of spam',
+    mood: 'skeptical',
+    systemPrompt: `You are Kira Santos, a fitness coach with 45k Instagram followers. You sell a £2,000 online transformation programme. You get 50+ DMs a day — mostly spam, most wanting free advice.
+
+Personality: Direct, no-nonsense, slightly cynical about DMs. You've been pitched to many times before and you're tired of it. BUT — if someone is genuine, specific, and not pitching immediately, you'll engage. You actually DO need help scaling your sales.
+
+Respond ONLY as Kira — short, punchy Instagram DM replies. No formatting. Maximum 2-3 sentences.
+
+At the end of EVERY reply, add: [SCORE: rapport=X, qualify=X, objection=X, booking=X] (0-10 each).
+
+Your progression:
+- If opener is generic/salesy → "not interested" or leave on read (reply: "Seen.")
+- If opener is specific and genuine → brief, guarded reply
+- Message 2-3: If they focus on her, ask questions → start answering, let guard down slightly
+- Message 3-4: If no pitch yet and good convo → mention you do handle all your own sales calls
+- Message 4-5: If they're asking smart questions about your business → get genuinely curious
+- Message 5+: If they've built real rapport and understand your situation → open to a call conversation
+- Objections to throw in when appropriate: "I've had bad experiences with setters before", "What makes you different from the 10 others who messaged me this week?"`,
+  },
+  {
+    id: 'agency_hostile',
+    emoji: '🚀',
+    name: 'Dev Patel',
+    handle: '@devpateldigital',
+    type: 'Marketing Agency Owner',
+    difficulty: 'hard',
+    diffLabel: 'Hard',
+    bio: '8k followers · Runs a £30k/mo SMMA · Posts about agency growth',
+    mood: 'hostile',
+    systemPrompt: `You are Dev Patel, a marketing agency owner making £30k/month. You run a team of 6. You sell a £5,000/month retainer. You post about SMMA growth and results.
+
+Personality: Blunt, busy, very hard to impress. You've built everything yourself and you're proud of it. You think most salespeople are mediocre. You'll be rude if the message is lazy. BUT — you secretly know your sales process needs work and if someone is GENUINELY impressive, knowledgeable, and adds value without pitching, you'll respect them.
+
+Respond ONLY as Dev — very short, often dismissive at first. No formatting. Maximum 2 sentences.
+
+At the end of EVERY reply, add: [SCORE: rapport=X, qualify=X, objection=X, booking=X] (0-10 each).
+
+Your progression:
+- Generic opener → "Not interested." or ignored: "Who are you?"
+- Specific/value-add opener → "Ok. What do you want?" or "Bold. Go on."
+- If they try to pitch immediately → "Pass. Thanks."
+- If they ask smart, non-obvious questions about your business → you answer, briefly
+- Message 3-4: Start throwing hard objections: "My team handles calls", "I've had 3 setters burn my leads", "What are your numbers?"
+- Message 4-5: If they handle objections properly and stay calm → ask "What does this actually look like?" (showing interest)
+- Message 5+: Only if they've been exceptional throughout → "Let's talk. Send me something."`,
+  },
+  {
+    id: 'finance_guarded',
+    emoji: '📈',
+    name: 'Sophie Laurent',
+    handle: '@sophielaurentfx',
+    type: 'Trading Educator',
+    difficulty: 'medium',
+    diffLabel: 'Medium',
+    bio: '22k followers · Forex trading coach · Sells £4,500 mentorship',
+    mood: 'guarded',
+    systemPrompt: `You are Sophie Laurent, a forex/trading educator with 22k followers. You sell a £4,500 trading mentorship programme. You're cautious about DMs because of scammers in the finance niche.
+
+Personality: Polite but guarded. Concerned about reputation. Very focused on quality — you only want serious students. You'll engage if someone seems legitimate and doesn't rush.
+
+Respond ONLY as Sophie — polite, measured Instagram DM replies. No formatting. 1-3 sentences.
+
+At the end of EVERY reply, add: [SCORE: rapport=X, qualify=X, objection=X, booking=X] (0-10 each).
+
+Your progression:
+- Generic opener → polite but brief: "Thanks for reaching out, what can I help with?"  
+- Good opener → more engaged, mention you're selective about who you work with
+- Message 2-3: Start asking them qualifying questions back — "Do you have experience in trading?" "What makes you want this now?"
+- Message 3-4: If they qualify well (not pitching, genuinely curious) → open up about needing better sales support
+- Message 4-5: Throw in: "I'm worried about quality control if someone else handles my leads", "My audience is very specific"
+- Message 5+: If they've shown expertise and patience → "Okay tell me more about how this works"`,
+  },
+];
+
+// Sim state
+let simState = {
+  personaId: null,
+  messages: [],       // {role:'user'|'persona', text, time}
+  turnCount: 0,
+  scores: { rapport:0, qualify:0, objection:0, booking:0 },
+  isTyping: false,
+  sessionKey: null,
+};
+
+function renderDMSimulator(el) {
+  const activePersId = simState.personaId || DM_PERSONAS[0].id;
+  const activeP = DM_PERSONAS.find(p => p.id === activePersId) || DM_PERSONAS[0];
+
+  el.innerHTML = `
+    <div class="section-label">DM Setter Simulator — Practice Real Scenarios</div>
+
+    <div class="card" style="margin-bottom:14px;padding:12px 16px;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <div style="font-size:20px;">📱</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--hi);">Instagram DM Role Play</div>
+          <div style="font-size:12px;color:var(--mid);">Pick a persona, then send your opening DM. The AI responds like a real prospect. Build rapport, qualify them, and try to book a call — without pitching too early.</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px;background:var(--te2);color:var(--teal);">Live AI responses</span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px;background:var(--go2);color:var(--gold);">Real-time coaching</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-top">
+      <!-- Persona selector -->
+      <div class="sim-sidebar">
+        <div class="sim-sidebar-head">Choose Prospect</div>
+        ${DM_PERSONAS.map(p => `
+          <div class="persona-card${p.id===activePersId?' active':''}" onclick="selectPersona('${p.id}')">
+            <div class="persona-avatar">${p.emoji}</div>
+            <div>
+              <div class="persona-name">${p.name}</div>
+              <div class="persona-desc">${p.type}<br><span style="opacity:.7">${p.bio.split('·')[0].trim()}</span></div>
+              <span class="persona-badge ${p.difficulty}">${p.diffLabel}</span>
+            </div>
+          </div>`).join('')}
+      </div>
+
+      <!-- Chat window -->
+      <div class="sim-chat-wrap">
+        <div class="sim-chat-header">
+          <div class="sim-chat-avatar">${activeP.emoji}</div>
+          <div>
+            <div class="sim-chat-name">${activeP.name}</div>
+            <div class="sim-chat-status">${activeP.handle} · ${activeP.bio.split('·').slice(1,3).join('·').trim()}</div>
+          </div>
+          <div class="sim-chat-actions">
+            <button class="sim-action-btn" onclick="getCoachTip()">💡 Coach tip</button>
+            <button class="sim-action-btn danger" onclick="resetSim()">↺ Reset</button>
+          </div>
+        </div>
+
+        <div class="sim-messages" id="sim-messages">
+          ${simState.personaId === activePersId && simState.messages.length > 0
+            ? renderSimMessages()
+            : `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:8px;opacity:.5;">
+                <div style="font-size:36px">${activeP.emoji}</div>
+                <div style="font-size:13px;color:var(--mid);text-align:center;">Send your opening DM to ${activeP.name}<br>Remember: be specific, not generic</div>
+              </div>`
+          }
+        </div>
+
+        <!-- Score bar -->
+        <div style="padding:10px 16px;background:var(--s2);border-top:1px solid var(--ln);display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+          <span style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);flex-shrink:0;">Score:</span>
+          ${['rapport','qualify','objection','booking'].map(k => `
+            <div style="display:flex;align-items:center;gap:4px;flex:1;min-width:80px;">
+              <span style="font-size:9px;color:var(--dim);white-space:nowrap;text-transform:capitalize;">${k}</span>
+              <div style="flex:1;height:4px;background:var(--ln);border-radius:2px;overflow:hidden;">
+                <div id="score-${k}" style="height:100%;border-radius:2px;background:var(--gold);width:${(simState.scores[k]||0)*10}%;transition:width .4s ease;"></div>
+              </div>
+              <span id="score-${k}-val" style="font-size:9px;font-weight:700;color:var(--gold);min-width:16px;">${simState.scores[k]||0}</span>
+            </div>`).join('')}
+        </div>
+
+        <div class="sim-input-area">
+          <textarea class="sim-input" id="sim-input" placeholder="Type your DM to ${activeP.name}..." rows="1"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendSimMessage();}"
+            oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px'"></textarea>
+          <button class="sim-send-btn" id="sim-send-btn" onclick="sendSimMessage()" title="Send (Enter)">➤</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coaching panel (shown after 3+ messages) -->
+    ${simState.messages.length >= 3 ? renderSimCoachPanel() : ''}
+  `;
+
+  setTimeout(() => scrollSimToBottom(), 50);
+}
+
+function renderSimMessages() {
+  return simState.messages.map(m => {
+    const isUser = m.role === 'user';
+    return `<div class="sim-msg ${isUser?'mine':'theirs'}">
+      ${!isUser ? `<div class="sim-chat-avatar" style="width:28px;height:28px;font-size:14px;">${DM_PERSONAS.find(p=>p.id===simState.personaId)?.emoji||'👤'}</div>` : ''}
+      <div>
+        <div class="sim-bubble">${escapeHtml(m.text)}</div>
+        <div class="sim-msg-time">${m.time}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderSimCoachPanel() {
+  const p = DM_PERSONAS.find(p => p.id === simState.personaId);
+  const s = simState.scores;
+  const total = Math.round((s.rapport + s.qualify + s.objection + s.booking) / 4);
+  const label = total >= 8 ? 'Excellent' : total >= 6 ? 'Good' : total >= 4 ? 'Developing' : 'Needs work';
+  const color = total >= 8 ? 'var(--teal)' : total >= 6 ? 'var(--gold)' : '#e06878';
+
+  return `
+    <div class="score-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="font-size:14px;font-weight:700;color:var(--hi);">📊 Session Performance</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:${color};">${total}/10 <span style="font-size:12px;font-weight:400;color:var(--mid);">${label}</span></div>
+      </div>
+      <div class="score-grid">
+        ${[
+          {k:'rapport',  l:'Rapport',     tip:'Are you building a real connection?'},
+          {k:'qualify',  l:'Qualifying',   tip:'Are you asking the right questions?'},
+          {k:'objection',l:'Objections',   tip:'Handling pushback gracefully?'},
+          {k:'booking',  l:'Booking',      tip:'Moving toward a call?'},
+        ].map(({k,l,tip}) => {
+          const v = s[k]||0;
+          const c = v>=7?'great':v>=5?'good':'poor';
+          return `<div class="score-item">
+            <div class="score-val ${c}">${v}</div>
+            <div class="score-lbl">${l}</div>
+          </div>`;
+        }).join('')}
+      </div>
+      <div id="sim-feedback-list"></div>
+    </div>`;
+}
+
+function selectPersona(id) {
+  if (simState.personaId !== id) {
+    simState = { personaId: id, messages: [], turnCount: 0, scores:{rapport:0,qualify:0,objection:0,booking:0}, isTyping: false };
+  }
+  const el = document.getElementById('app-content');
+  renderDMSimulator(el);
+}
+
+function resetSim() {
+  simState = { personaId: simState.personaId, messages: [], turnCount: 0, scores:{rapport:0,qualify:0,objection:0,booking:0}, isTyping: false };
+  const el = document.getElementById('app-content');
+  renderDMSimulator(el);
+}
+
+async function sendSimMessage() {
+  const input = document.getElementById('sim-input');
+  const btn   = document.getElementById('sim-send-btn');
+  const text  = input.value.trim();
+  if (!text || simState.isTyping) return;
+
+  const persona = DM_PERSONAS.find(p => p.id === simState.personaId) || DM_PERSONAS[0];
+  if (!simState.personaId) { simState.personaId = persona.id; }
+
+  // Add user message
+  const now = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  simState.messages.push({ role:'user', text, time: now });
+  simState.turnCount++;
+  input.value = '';
+  input.style.height = 'auto';
+  simState.isTyping = true;
+  btn.disabled = true;
+
+  // Render user message immediately
+  const msgArea = document.getElementById('sim-messages');
+  msgArea.innerHTML = renderSimMessages();
+  // Show typing indicator
+  msgArea.innerHTML += `<div class="sim-msg theirs typing-indicator" id="sim-typing">
+    <div class="sim-chat-avatar" style="width:28px;height:28px;font-size:14px;">${persona.emoji}</div>
+    <div class="typing-dots"><span></span><span></span><span></span></div>
+  </div>`;
+  scrollSimToBottom();
+
+  // Build conversation history for API
+  const apiMessages = [];
+  simState.messages.slice(0,-1).forEach(m => {
+    apiMessages.push({
+      role: m.role === 'user' ? 'user' : 'assistant',
+      content: m.text,
+    });
+  });
+  apiMessages.push({ role: 'user', content: text });
+
+  try {
+    // Random typing delay (realistic)
+    const delay = 1200 + Math.random() * 1800;
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 300,
+        system: persona.systemPrompt,
+        messages: apiMessages,
+      })
+    });
+
+    const data = await response.json();
+    let reply = data.content?.[0]?.text || 'Seen.';
+
+    // Parse score tag
+    const scoreMatch = reply.match(/\[SCORE:\s*rapport=(\d+),\s*qualify=(\d+),\s*objection=(\d+),\s*booking=(\d+)\]/);
+    if (scoreMatch) {
+      simState.scores = {
+        rapport:   parseInt(scoreMatch[1]),
+        qualify:   parseInt(scoreMatch[2]),
+        objection: parseInt(scoreMatch[3]),
+        booking:   parseInt(scoreMatch[4]),
+      };
+      reply = reply.replace(scoreMatch[0], '').trim();
+    }
+
+    // Simulate typing delay
+    await new Promise(r => setTimeout(r, delay));
+
+    // Add persona reply
+    const replyTime = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    simState.messages.push({ role:'persona', text: reply, time: replyTime });
+
+    // Re-render everything
+    document.getElementById('sim-typing')?.remove();
+    msgArea.innerHTML = renderSimMessages();
+    scrollSimToBottom();
+
+    // Update score bars
+    updateScoreBars();
+
+    // Re-render coach panel if enough messages
+    const el = document.getElementById('app-content');
+    if (simState.messages.length >= 3) {
+      const existing = el.querySelector('.score-panel');
+      if (existing) {
+        existing.outerHTML = renderSimCoachPanel();
+      } else {
+        el.insertAdjacentHTML('beforeend', renderSimCoachPanel());
+      }
+      generateFeedback();
+    }
+
+  } catch(err) {
+    document.getElementById('sim-typing')?.remove();
+    simState.messages.push({ role:'persona', text:'(Connection error — try again)', time: '—' });
+    msgArea.innerHTML = renderSimMessages();
+    scrollSimToBottom();
+  }
+
+  simState.isTyping = false;
+  btn.disabled = false;
+  document.getElementById('sim-input')?.focus();
+}
+
+function updateScoreBars() {
+  Object.entries(simState.scores).forEach(([k,v]) => {
+    const bar = document.getElementById('score-'+k);
+    const val = document.getElementById('score-'+k+'-val');
+    if (bar) bar.style.width = (v*10)+'%';
+    if (val) val.textContent = v;
+  });
+}
+
+function generateFeedback() {
+  const list = document.getElementById('sim-feedback-list');
+  if (!list) return;
+  const s = simState.scores;
+  const items = [];
+
+  if (s.rapport >= 7) items.push({t:'positive', m:'Strong rapport — you\'re connecting well and not rushing.'});
+  else if (s.rapport <= 3) items.push({t:'negative', m:'Rapport needs work — focus on them, not on pitching. Ask questions about their business.'});
+
+  if (s.qualify >= 7) items.push({t:'positive', m:'Great qualification — you\'re asking the right questions to understand their situation.'});
+  else if (s.qualify <= 3) items.push({t:'negative', m:'Qualification is low — ask about their current sales process, volume, and what\'s working or not.'});
+
+  if (s.objection >= 7) items.push({t:'positive', m:'Excellent objection handling — you\'re staying calm and redirecting effectively.'});
+  else if (s.objection <= 3 && simState.turnCount > 4) items.push({t:'negative', m:'If you\'ve hit resistance, try: "Totally get that — can I ask what specifically concerns you?"'});
+
+  if (s.booking >= 7) items.push({t:'positive', m:'Great progression toward a call — timing and framing are spot on.'});
+  else if (s.booking <= 3 && simState.turnCount >= 5) items.push({t:'negative', m:'Still haven\'t moved toward a call. After 4-5 messages of good rapport, try: "Would it be worth a quick 15-min chat to see if there\'s a fit?"'});
+
+  list.innerHTML = items.map(i => `<div class="feedback-item ${i.t}">${i.m}</div>`).join('') ||
+    '<div style="font-size:12px;color:var(--dim);text-align:center;padding:8px 0;">Keep going — feedback will appear as the conversation develops.</div>';
+}
+
+async function getCoachTip() {
+  if (simState.messages.length === 0) {
+    showToast('Start the conversation first!'); return;
+  }
+  const persona = DM_PERSONAS.find(p => p.id === simState.personaId);
+  const lastMessages = simState.messages.slice(-4).map(m => `${m.role === 'user' ? 'Setter' : persona.name}: ${m.text}`).join('\n');
+
+  const msgArea = document.getElementById('sim-messages');
+  const tipId = 'tip-' + Date.now();
+  msgArea.innerHTML += `<div id="${tipId}" class="sim-coach-tip">Getting coaching tip...</div>`;
+  scrollSimToBottom();
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 150,
+        system: `You are a high-ticket sales coach reviewing a DM setter's conversation in real time. Give one specific, actionable coaching tip for what they should say or do NEXT. Be direct. 2-3 sentences max. No bullet points.`,
+        messages: [{ role:'user', content: `Conversation so far:\n${lastMessages}\n\nWhat should the setter do next?` }],
+      })
+    });
+    const data = await response.json();
+    const tip = data.content?.[0]?.text || 'Keep building rapport before making any move toward a call.';
+    document.getElementById(tipId).textContent = tip;
+  } catch {
+    document.getElementById(tipId).textContent = 'Focus on asking one good question about their business. What\'s their biggest sales challenge right now?';
+  }
+  scrollSimToBottom();
+}
+
+function scrollSimToBottom() {
+  const m = document.getElementById('sim-messages');
+  if (m) m.scrollTop = m.scrollHeight;
 }
 
 // Scroll animations

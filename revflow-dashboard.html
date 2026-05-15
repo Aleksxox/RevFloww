@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REVFLOW — Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23c9a84c'/><text y='.9em' font-size='70' x='12' fill='%2308091a' font-weight='900' font-family='serif'>R</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -300,6 +301,8 @@ select{appearance:none;background:var(--input-bg);border:1px solid var(--input-b
   <div class="live-pill"><span class="pulse"></span>LIVE</div>
   <div class="clock" id="clock">00:00:00</div>
   <button class="insta-btn" onclick="openInstagram()" title="Open Instagram DMs">📲</button>
+  <a href="revflow-academy.html" title="Go to Academy" style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);background:transparent;border:1px solid var(--ln);padding:5px 12px;border-radius:4px;text-decoration:none;transition:all .15s;white-space:nowrap;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold)'" onmouseout="this.style.color='var(--mid)';this.style.borderColor='var(--ln)'">🎓 Academy</a>
+  <button onclick="exportCSV()" title="Export today's data as CSV" style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);background:transparent;border:1px solid var(--ln);padding:5px 12px;border-radius:4px;cursor:pointer;transition:all .15s;white-space:nowrap;" onmouseover="this.style.color='var(--sky)';this.style.borderColor='var(--sky)'" onmouseout="this.style.color='var(--mid)';this.style.borderColor='var(--ln)'">📥 Export</button>
 </header>
 
 <nav>
@@ -310,6 +313,19 @@ select{appearance:none;background:var(--input-bg);border:1px solid var(--input-b
 </nav>
 
 <div class="save-indicator" id="save-indicator">✓ Saved</div>
+
+<!-- ══════ ONBOARDING BANNER ══════ -->
+<div id="onboard-banner" style="
+  background:linear-gradient(90deg,var(--s2),rgba(240,192,64,.06),var(--s2));
+  border-bottom:1px solid var(--go2);
+  padding:10px 20px;display:flex;align-items:center;gap:12px;
+  font-size:11px;color:var(--gold);
+">
+  <span style="font-size:16px;">⚙️</span>
+  <span><strong>Get started:</strong> Set your product value and commission rate in <strong>Settings</strong> to unlock live earnings — takes 30 seconds.</span>
+  <button onclick="switchToSettings()" style="background:var(--go2);border:1px solid var(--go3);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:.08em;padding:5px 12px;border-radius:4px;cursor:pointer;white-space:nowrap;margin-left:auto;">Open Settings →</button>
+  <button onclick="document.getElementById('onboard-banner').style.display='none';localStorage.setItem('rf_onboard_done','1')" style="background:transparent;border:none;color:var(--dim);cursor:pointer;font-size:16px;padding:0 4px;" title="Dismiss">×</button>
+</div>
 
 <!-- ══════ DM SETTER ══════ -->
 <div class="page on" id="setter">
@@ -335,6 +351,8 @@ select{appearance:none;background:var(--input-bg);border:1px solid var(--input-b
     <span>Data saves automatically to your session</span>
     <span style="color:var(--ln2);">·</span>
     <button onclick="openInstagram()" style="background:transparent;border:none;color:var(--gold);cursor:pointer;font-size:10px;text-decoration:underline;padding:0;">Open Instagram DMs ↗</button>
+    <span style="color:var(--ln2);">·</span>
+    <button onclick="if(confirm('Clear all of today\'s data?')){localStorage.removeItem(DATA_KEY);location.reload();}" style="background:transparent;border:none;color:var(--rose);cursor:pointer;font-size:10px;text-decoration:underline;padding:0;">Reset today ↺</button>
   </div>
   <div class="mg mg8">
     <div class="mc ac-sky"><div class="mc-lbl">ICP Followers<br>Organic</div><input class="mc-input sky" id="inp_icpOrg" type="number" min="0" placeholder="0" oninput="handleInput('icpOrg',this.value)" title="Edit"></div>
@@ -935,6 +953,61 @@ if(tbody){[['7 Jun',38,13,10,6,14,12,10,4],['8 Jun',42,15,11,7,16,13,11,4],['9 J
 loadInputsToDOM();
 refreshCalc();
 renderCallLog();
+
+// Hide onboarding banner if settings already configured or previously dismissed
+(function(){
+  const s = loadSettings();
+  const done = localStorage.getItem('rf_onboard_done');
+  if (done || (s.productValue && s.productValue > 0)) {
+    const b = document.getElementById('onboard-banner');
+    if (b) b.style.display = 'none';
+  }
+})();
+
+function switchToSettings() {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('on'));
+  const t = document.querySelector('.tab[data-p="settings"]');
+  const p = document.getElementById('settings');
+  if (t) t.classList.add('on');
+  if (p) p.classList.add('on');
+  renderCallLog();
+  document.getElementById('onboard-banner').style.display = 'none';
+  localStorage.setItem('rf_onboard_done','1');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── CSV EXPORT ──
+function exportCSV() {
+  const d = loadData();
+  const s = loadSettings();
+  const rows = [
+    ['Field','Value'],
+    ['Date', TODAY],
+    ['ICP Organic', d.icpOrg||0],
+    ['ICP Ads', d.icpAds||0],
+    ['Leads', d.leads||0],
+    ['Conversations', d.convos||0],
+    ['Outbound Sent', d.sent||0],
+    ['Replies', d.replies||0],
+    ['Reply Rate', d.sent>0?((d.replies||0)/(d.sent)*100).toFixed(1)+'%':'0%'],
+    ['Calls Booked (Warm)', d.wBooked||0],
+    ['Calls Booked (Inbound)', d.iBooked||0],
+    ['Qualified Bookings', d.qBooked||0],
+    ['Showed', d.showed||0],
+    ['Show Rate', (d.wBooked||0)+(d.iBooked||0)>0?((d.showed||0)/((d.wBooked||0)+(d.iBooked||0))*100).toFixed(1)+'%':'0%'],
+    ['Closes', d.closes||0],
+    ['Product Value', '£'+(s.productValue||0)],
+    ['Revenue', '£'+Math.round((d.closes||0)*(s.productValue||0))],
+    ['Commission Rate', (s.commissionRate||0)+'%'],
+    ['Commission Earned', '£'+Math.round((d.closes||0)*(s.productValue||0)*((s.commissionRate||0)/100))],
+  ];
+  const csv = rows.map(r=>r.join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download = 'revflow-data-'+TODAY+'.csv';
+  a.click();
+}
 </script>
 </body>
 </html>
